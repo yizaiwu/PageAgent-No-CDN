@@ -122,63 +122,95 @@ document.body.appendChild(s);
 
 ## AI 模型設定方法
 
-### Google API Key 輸入方法
+### Google Gemini（Google AI Studio）
 
-baseURL：https://generativelanguage.googleapis.com/v1beta/
-apiKey：from Google AI Studio
-model：gemini-flash-latest
+```
+baseURL:  https://generativelanguage.googleapis.com/v1beta/
+apiKey:   （從 Google AI Studio 取得）
+model:    gemini-flash-latest
+```
 
-Google AI Studio API Key 支援模型清單
-https://ray.so/m6j9Wam
+前往 [Google AI Studio](https://aistudio.google.com) 申請免費 API Key。
 
-gemini-2.5-flash — input: 1048576, output: 65536
-gemini-2.5-flash-lite — input: 1048576, output: 65536
-gemini-2.5-flash-lite-preview-09-2025 — input: 1048576, output: 65536
-gemini-2.5-pro — input: 1048576, output: 65536
-gemini-3-flash-preview — input: 1048576, output: 65536
-gemini-3-pro-preview — input: 1048576, output: 65536
-gemini-3.1-flash-lite-preview — input: 1048576, output: 65536
-gemini-3.1-pro-preview — input: 1048576, output: 65536
-gemini-3.1-pro-preview-customtools — input: 1048576, output: 65536
-gemini-flash-latest — input: 1048576, output: 65536
-gemini-flash-lite-latest — input: 1048576, output: 65536
-gemini-pro-latest — input: 1048576, output: 65536
-gemini-robotics-er-1.5-preview — input: 1048576, output: 65536
-lyria-3-clip-preview — input: 1048576, output: 65536
-lyria-3-pro-preview — input: 1048576, output: 65536
-gemini-2.0-flash — input: 1048576, output: 8192
-gemini-2.0-flash-001 — input: 1048576, output: 8192
-gemini-2.0-flash-lite — input: 1048576, output: 8192
-gemini-2.0-flash-lite-001 — input: 1048576, output: 8192
-deep-research-pro-preview-12-2025 — input: 131072, output: 65536
-gemini-2.5-computer-use-preview-10-2025 — input: 131072, output: 65536
-gemini-3.1-flash-live-preview — input: 131072, output: 65536
-gemini-3-pro-image-preview — input: 131072, output: 32768
-nano-banana-pro-preview — input: 131072, output: 32768
-gemini-2.5-flash-native-audio-latest — input: 131072, output: 8192
-gemini-2.5-flash-native-audio-preview-09-2025 — input: 131072, output: 8192
-gemini-2.5-flash-native-audio-preview-12-2025 — input: 131072, output: 8192
-gemma-3-27b-it — input: 131072, output: 8192
-gemini-3.1-flash-image-preview — input: 65536, output: 65536
-gemini-2.5-flash-image — input: 32768, output: 32768
-gemma-3-12b-it — input: 32768, output: 8192
-gemma-3-1b-it — input: 32768, output: 8192
-gemma-3-4b-it — input: 32768, output: 8192
-gemini-2.5-flash-preview-tts — input: 8192, output: 16384
-gemini-2.5-pro-preview-tts — input: 8192, output: 16384
-gemma-3n-e2b-it — input: 8192, output: 2048
-gemma-3n-e4b-it — input: 8192, output: 2048
-gemini-embedding-2-preview — input: 8192, output: 1
-aqa — input: 7168, output: 1024
-gemini-embedding-001 — input: 2048, output: 1
-imagen-4.0-fast-generate-001 — input: 480, output: 8192
-imagen-4.0-generate-001 — input: 480, output: 8192
-imagen-4.0-ultra-generate-001 — input: 480, output: 8192
-veo-2.0-generate-001 — input: 480, output: 8192
-veo-3.0-fast-generate-001 — input: 480, output: 8192
-veo-3.0-generate-001 — input: 480, output: 8192
-veo-3.1-fast-generate-preview — input: 480, output: 8192
-veo-3.1-generate-preview — input: 480, output: 8192
+> **注意**：請選用支援 Function Calling 的模型（標記 ✅ 者），純音訊、圖片生成、嵌入向量等模型不支援瀏覽器操作自動化。
+
+#### 支援 Function Calling 的推薦模型
+
+| 模型名稱 | 最大輸入 token | 最大輸出 token |
+|---------|:-------------:|:-------------:|
+| `gemini-flash-latest` ⭐ | 1,048,576 | 65,536 |
+| `gemini-pro-latest` | 1,048,576 | 65,536 |
+| `gemini-flash-lite-latest` | 1,048,576 | 65,536 |
+| `gemini-2.5-flash` | 1,048,576 | 65,536 |
+| `gemini-2.5-pro` | 1,048,576 | 65,536 |
+| `gemini-2.5-flash-lite` | 1,048,576 | 65,536 |
+| `gemini-3-flash-preview` | 1,048,576 | 65,536 |
+| `gemini-3-pro-preview` | 1,048,576 | 65,536 |
+| `gemini-3.1-flash-lite-preview` | 1,048,576 | 65,536 |
+| `gemini-3.1-pro-preview` | 1,048,576 | 65,536 |
+| `gemini-2.0-flash` | 1,048,576 | 8,192 |
+| `gemini-2.0-flash-lite` | 1,048,576 | 8,192 |
+| `gemma-3-27b-it` | 131,072 | 8,192 |
+| `gemma-3-12b-it` | 32,768 | 8,192 |
+| `gemma-3-4b-it` | 32,768 | 8,192 |
+
+<details>
+<summary>📋 查看完整模型清單（含不適用模型）</summary>
+
+完整清單來源：[ray.so/m6j9Wam](https://ray.so/m6j9Wam)
+
+| 模型名稱 | 輸入 token | 輸出 token |
+|---------|----------:|----------:|
+| gemini-2.5-flash | 1,048,576 | 65,536 |
+| gemini-2.5-flash-lite | 1,048,576 | 65,536 |
+| gemini-2.5-flash-lite-preview-09-2025 | 1,048,576 | 65,536 |
+| gemini-2.5-pro | 1,048,576 | 65,536 |
+| gemini-3-flash-preview | 1,048,576 | 65,536 |
+| gemini-3-pro-preview | 1,048,576 | 65,536 |
+| gemini-3.1-flash-lite-preview | 1,048,576 | 65,536 |
+| gemini-3.1-pro-preview | 1,048,576 | 65,536 |
+| gemini-3.1-pro-preview-customtools | 1,048,576 | 65,536 |
+| gemini-flash-latest | 1,048,576 | 65,536 |
+| gemini-flash-lite-latest | 1,048,576 | 65,536 |
+| gemini-pro-latest | 1,048,576 | 65,536 |
+| gemini-robotics-er-1.5-preview | 1,048,576 | 65,536 |
+| lyria-3-clip-preview | 1,048,576 | 65,536 |
+| lyria-3-pro-preview | 1,048,576 | 65,536 |
+| gemini-2.0-flash | 1,048,576 | 8,192 |
+| gemini-2.0-flash-001 | 1,048,576 | 8,192 |
+| gemini-2.0-flash-lite | 1,048,576 | 8,192 |
+| gemini-2.0-flash-lite-001 | 1,048,576 | 8,192 |
+| deep-research-pro-preview-12-2025 | 131,072 | 65,536 |
+| gemini-2.5-computer-use-preview-10-2025 | 131,072 | 65,536 |
+| gemini-3.1-flash-live-preview | 131,072 | 65,536 |
+| gemini-3-pro-image-preview | 131,072 | 32,768 |
+| nano-banana-pro-preview | 131,072 | 32,768 |
+| gemini-2.5-flash-native-audio-latest | 131,072 | 8,192 |
+| gemini-2.5-flash-native-audio-preview-09-2025 | 131,072 | 8,192 |
+| gemini-2.5-flash-native-audio-preview-12-2025 | 131,072 | 8,192 |
+| gemma-3-27b-it | 131,072 | 8,192 |
+| gemini-3.1-flash-image-preview | 65,536 | 65,536 |
+| gemini-2.5-flash-image | 32,768 | 32,768 |
+| gemma-3-12b-it | 32,768 | 8,192 |
+| gemma-3-1b-it | 32,768 | 8,192 |
+| gemma-3-4b-it | 32,768 | 8,192 |
+| gemini-2.5-flash-preview-tts | 8,192 | 16,384 |
+| gemini-2.5-pro-preview-tts | 8,192 | 16,384 |
+| gemma-3n-e2b-it | 8,192 | 2,048 |
+| gemma-3n-e4b-it | 8,192 | 2,048 |
+| gemini-embedding-2-preview | 8,192 | 1 |
+| aqa | 7,168 | 1,024 |
+| gemini-embedding-001 | 2,048 | 1 |
+| imagen-4.0-fast-generate-001 | 480 | 8,192 |
+| imagen-4.0-generate-001 | 480 | 8,192 |
+| imagen-4.0-ultra-generate-001 | 480 | 8,192 |
+| veo-2.0-generate-001 | 480 | 8,192 |
+| veo-3.0-fast-generate-001 | 480 | 8,192 |
+| veo-3.0-generate-001 | 480 | 8,192 |
+| veo-3.1-fast-generate-preview | 480 | 8,192 |
+| veo-3.1-generate-preview | 480 | 8,192 |
+
+</details>
 
 ### 本機 Ollama
 
