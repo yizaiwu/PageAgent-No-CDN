@@ -84,8 +84,8 @@ PageAgent 用瀏覽器原生 DOM API 執行動作
 ### 方法一：DevTools Snippets（推薦，可永久保存）
 
 1. 開啟任意網頁，按 **F12** 開啟 DevTools
-2. 切換到 **Sources** 分頁 → 左側展開 **Snippets**
-3. 點 **+ New snippet**，命名為 `pageagent-offline`
+2. 切換到 **Sources(來源)** 分頁 → 左側展開 **Snippets(程式碼片段)**
+3. 點 **+ New snippet(+新的程式碼片段)**，命名為 `pageagent-offline`
 4. 將 `page-agent-offline.js` 的全部內容貼入
 5. 按 **Ctrl+Enter** 執行
 
@@ -120,23 +120,65 @@ document.body.appendChild(s);
 
 ---
 
-## AI 模型設定
+## AI 模型設定方法
 
-### 阿里雲 Qwen（Dashscope）
+### Google API Key 輸入方法
 
-```
-baseURL:  https://dashscope.aliyuncs.com/compatible-mode/v1
-apiKey:   sk-xxxxxxxxxxxx
-model:    qwen-plus
-```
+baseURL：https://generativelanguage.googleapis.com/v1beta/
+apiKey：from Google AI Studio
+model：gemini-flash-latest
 
-### OpenAI
+Google AI Studio API Key 支援模型清單
+https://ray.so/m6j9Wam
 
-```
-baseURL:  https://api.openai.com/v1
-apiKey:   sk-xxxxxxxxxxxx
-model:    gpt-4o
-```
+gemini-2.5-flash — input: 1048576, output: 65536
+gemini-2.5-flash-lite — input: 1048576, output: 65536
+gemini-2.5-flash-lite-preview-09-2025 — input: 1048576, output: 65536
+gemini-2.5-pro — input: 1048576, output: 65536
+gemini-3-flash-preview — input: 1048576, output: 65536
+gemini-3-pro-preview — input: 1048576, output: 65536
+gemini-3.1-flash-lite-preview — input: 1048576, output: 65536
+gemini-3.1-pro-preview — input: 1048576, output: 65536
+gemini-3.1-pro-preview-customtools — input: 1048576, output: 65536
+gemini-flash-latest — input: 1048576, output: 65536
+gemini-flash-lite-latest — input: 1048576, output: 65536
+gemini-pro-latest — input: 1048576, output: 65536
+gemini-robotics-er-1.5-preview — input: 1048576, output: 65536
+lyria-3-clip-preview — input: 1048576, output: 65536
+lyria-3-pro-preview — input: 1048576, output: 65536
+gemini-2.0-flash — input: 1048576, output: 8192
+gemini-2.0-flash-001 — input: 1048576, output: 8192
+gemini-2.0-flash-lite — input: 1048576, output: 8192
+gemini-2.0-flash-lite-001 — input: 1048576, output: 8192
+deep-research-pro-preview-12-2025 — input: 131072, output: 65536
+gemini-2.5-computer-use-preview-10-2025 — input: 131072, output: 65536
+gemini-3.1-flash-live-preview — input: 131072, output: 65536
+gemini-3-pro-image-preview — input: 131072, output: 32768
+nano-banana-pro-preview — input: 131072, output: 32768
+gemini-2.5-flash-native-audio-latest — input: 131072, output: 8192
+gemini-2.5-flash-native-audio-preview-09-2025 — input: 131072, output: 8192
+gemini-2.5-flash-native-audio-preview-12-2025 — input: 131072, output: 8192
+gemma-3-27b-it — input: 131072, output: 8192
+gemini-3.1-flash-image-preview — input: 65536, output: 65536
+gemini-2.5-flash-image — input: 32768, output: 32768
+gemma-3-12b-it — input: 32768, output: 8192
+gemma-3-1b-it — input: 32768, output: 8192
+gemma-3-4b-it — input: 32768, output: 8192
+gemini-2.5-flash-preview-tts — input: 8192, output: 16384
+gemini-2.5-pro-preview-tts — input: 8192, output: 16384
+gemma-3n-e2b-it — input: 8192, output: 2048
+gemma-3n-e4b-it — input: 8192, output: 2048
+gemini-embedding-2-preview — input: 8192, output: 1
+aqa — input: 7168, output: 1024
+gemini-embedding-001 — input: 2048, output: 1
+imagen-4.0-fast-generate-001 — input: 480, output: 8192
+imagen-4.0-generate-001 — input: 480, output: 8192
+imagen-4.0-ultra-generate-001 — input: 480, output: 8192
+veo-2.0-generate-001 — input: 480, output: 8192
+veo-3.0-fast-generate-001 — input: 480, output: 8192
+veo-3.0-generate-001 — input: 480, output: 8192
+veo-3.1-fast-generate-preview — input: 480, output: 8192
+veo-3.1-generate-preview — input: 480, output: 8192
 
 ### 本機 Ollama
 
@@ -147,15 +189,6 @@ model:    qwen2.5
 ```
 
 > **注意**：模型必須支援 **Function Calling / Tool Use**，否則 PageAgent 無法正常運作。
-
-#### Ollama 推薦模型
-
-```bash
-ollama pull qwen2.5        # 7B，速度與效果平衡
-ollama pull qwen2.5:14b    # 14B，效果更好
-ollama pull llama3.2       # Meta，支援 tools
-ollama pull mistral-nemo   # 12B，tool calling 穩定
-```
 
 #### Ollama CORS 設定（必要）
 
